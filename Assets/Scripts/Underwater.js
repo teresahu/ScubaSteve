@@ -2,15 +2,19 @@
  
 //Define variables
 var underwaterLevel = 3;
+private var defaultFog;
+private var defaultFogColor;
+private var defaultFogDensity;
+private var defaultSkybox;
  
 //The scene's default fog settings
-private var defaultFog = RenderSettings.fog;
-private var defaultFogColor = RenderSettings.fogColor;
-private var defaultFogDensity = RenderSettings.fogDensity;
-private var defaultSkybox = RenderSettings.skybox;
 var noSkybox : Material;
  
 function Start () {
+	defaultFog = RenderSettings.fog;
+	defaultFogColor = RenderSettings.fogColor;
+	defaultFogDensity = RenderSettings.fogDensity;
+	defaultSkybox = RenderSettings.skybox;
 	//Set the background color
 	camera.backgroundColor = Color (0, 0.4, 0.7, 1);
 }
