@@ -8,7 +8,7 @@ function Start () {
 }
 
 function Update(){
-	var alarmSound : AudioSource = (GetComponents(AudioSource))[1];
+	var alarmSound : AudioSource = (GetComponents(AudioSource))[0];
 	if(!alarmSound.isPlaying && 
 			(Input.GetKeyDown("t") ||
 			diveTime*60 <= Time.realtimeSinceStartup))
