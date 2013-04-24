@@ -5,11 +5,10 @@ var diveTime = 1;//in minutes
 var alarmSound: AudioSource;
 
 function Start () {
-	var aSources = GetComponents(AudioSource);
-	alarmSound = aSources[0];
 }
 
 function Update(){
+	var alarmSound : AudioSource = (GetComponents(AudioSource))[1];
 	if(!alarmSound.isPlaying && 
 			(Input.GetKeyDown("t") ||
 			diveTime*60 <= Time.realtimeSinceStartup))
