@@ -2,7 +2,6 @@
 
 var oxygenTime = 3;//in minutes
 var diveTime = 1;//in minutes
-var alarmSound: AudioSource;
 
 function Start () {
 }
