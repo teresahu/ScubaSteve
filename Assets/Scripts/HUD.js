@@ -26,7 +26,6 @@ function OnGUI(){
 	GUI.Label(Rect(0,0,Screen.width,Screen.height),
 		   "Depth: "+ -Camera.mainCamera.gameObject.transform.position.y+
 		   "\nOxygen level:"+(100*(oxygenTime*60-currentTime)/(oxygenTime*60)).ToString("n1")+"%"+
-		   "\nTime:"+currentTime+"%"+
 		   "\nDive Timer:"+diveTimeRemaining.ToString("n0")+" secs"
 		   );
 }
