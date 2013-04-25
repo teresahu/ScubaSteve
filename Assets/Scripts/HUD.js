@@ -2,19 +2,38 @@
 
 var oxygenTime = 3;//in minutes
 var diveTime = 1;//in minutes
-var alarmSound: AudioSource;
+var alarmSound : AudioClip[];
 
 function Start () {
 }
 
 function Update(){
-	var alarmSound : AudioSource = (GetComponents(AudioSource))[0];
-	if(!alarmSound.isPlaying && 
+	
+	if(!audio.isPlaying && 
 			(Input.GetKeyDown("t") ||
 			diveTime*60 <= Time.realtimeSinceStartup))
-		alarmSound.Play();
+			{
+				audio.clip = alarmSound[0];
+				audio.Play();
+			}
 	if(Input.GetKeyDown("k"))
-		alarmSound.Stop();
+		audio.Stop();
+		
+	if(!audio.isPlaying && (Input.GetKeyDown("u")))
+	{
+		Surfacing();	
+	}
+	
+		
+}
+
+function Surfacing()
+{
+	audio.clip = alarmSound[1];
+	audio.Play();
+	yield WaitForSeconds(audio.clip.length);
+	audio.clip = alarmSound[2];
+	audio.Play();
 }
 
 function OnGUI(){
