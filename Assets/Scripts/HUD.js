@@ -30,6 +30,12 @@ function Update(){
 		Surfacing();	
 	}
 	
+	if(!alarmSound.isPlaying && (Input.GetKeyDown("z") || oxygenLvl <= 10))
+	{
+		var sound:AudioSource = (GetComponents(AudioSource))[4];
+		sound.Play();
+	}
+	
 		
 }
 
