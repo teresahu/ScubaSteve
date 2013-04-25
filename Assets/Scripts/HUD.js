@@ -12,8 +12,18 @@ function Update(){
 			(Input.GetKeyDown("t") ||
 			diveTime*60 <= Time.realtimeSinceStartup))
 		alarmSound.Play();
-	if(Input.GetKeyDown("k"))
+	if(Input.GetKeyDown("k")){
 		alarmSound.Stop();
+		diveTime = 100;
+	}
+	var time = Time.realtimeSinceStartup;
+	var breathSound : AudioSource = (GetComponents(AudioSource))[1];
+	var oxygenLvl = (100*(oxygenTime*60-time)/(oxygenTime*60));
+	if((Input.GetKeyDown("o") || parseInt(oxygenLvl)%25 == 0) 
+			&& !breathSound.isPlaying){
+		breathSound.pitch = 1+(time)/(oxygenTime*60);
+		breathSound.Play();
+	}
 }
 
 function OnGUI(){
