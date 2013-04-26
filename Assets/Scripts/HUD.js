@@ -2,8 +2,12 @@
 
 var oxygenTime = 3;//in minutes
 var diveTime = 1;//in minutes
+var oldPos: int;//Diver's old location
 
-function Start () {
+
+function Start ()
+{
+	oldPos = Camera.mainCamera.transform.position.y;
 }
 
 function Update(){
@@ -25,7 +29,7 @@ function Update(){
 		breathSound.Play();
 	}
 	
-	if(!alarmSound.isPlaying && (Input.GetKeyDown("u")))
+	if(!alarmSound.isPlaying && ascendCheck())
 	{
 		Surfacing();	
 	}
@@ -36,6 +40,7 @@ function Update(){
 		sound.Play();
 	}
 	
+	oldPos = Camera.mainCamera.transform.position.y;
 		
 }
 
@@ -46,6 +51,14 @@ function Surfacing()
 	yield WaitForSeconds(audio.clip.length);
 	var sound2:AudioSource = (GetComponents(AudioSource))[3];
 	sound2.Play();
+}
+
+function ascendCheck()
+{
+	var currentPos = Camera.mainCamera.transform.position.y;
+	
+	if(oldPos < currentPos) //checks if player is moving upwards
+		return (Mathf.Round((Camera.mainCamera.transform.position.y))%50 == 0);
 }
 
 function OnGUI(){
