@@ -1,7 +1,7 @@
 var sound : AudioSource;
 
 function Start() {
-	InvokeRepeating("PlaySound", 5, 10);
+	InvokeRepeating("PlaySound", 15, 30);
 }
 
 function PlaySound() {
