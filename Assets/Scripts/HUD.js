@@ -12,7 +12,7 @@ function Update(){
 			(Input.GetKeyDown("t") ||
 			diveTime*60 <= Time.realtimeSinceStartup))
 		alarmSound.Play();
-	if(Input.GetKeyDown("k")){
+	if(Input.GetKeyDown("k")||Time.realtimeSinceStartup > (diveTime*60+7.08)){
 		alarmSound.Stop();
 		diveTime = 100;
 	}
